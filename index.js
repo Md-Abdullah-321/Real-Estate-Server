@@ -19,7 +19,7 @@ import userRouter from './src/routes/user.route.js';
 dotenv.config();
 const app = express();
 app.use(cors({
-    origin: 'https://real-estate-client-tau.vercel.app', // Set the origin of your client application
+    origin: '*', // Set the origin of your client application
     credentials: true, // Allow credentials
   }));
 
