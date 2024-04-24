@@ -19,7 +19,7 @@ import userRouter from './src/routes/user.route.js';
 dotenv.config();
 const app = express();
 app.use(cors({
-    origin: 'https://real-estate-client-tau.vercel.app/'
+    origin: 'https://real-estate-client-tau.vercel.app'
 }));
 
 const PORT = process.env.PORT || 3000;
