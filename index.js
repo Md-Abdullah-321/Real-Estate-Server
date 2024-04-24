@@ -48,7 +48,7 @@ app.get("/", (req, res) => {
 })
 
 
-app.listen()
+app.options('*', cors());
 
 //Global Error Middleware:
 app.use((err, req, res, next) => {
