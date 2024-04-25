@@ -54,8 +54,7 @@ export const signin = async (req, res, next) => {
         const { password: pass, ...rest } = validUser._doc;
 
         res.cookie('access_token', token, { 
-            expires: expirationDate,
-            secure: true 
+            expires: expirationDate
         })
         .status(200)
         .json(rest);
