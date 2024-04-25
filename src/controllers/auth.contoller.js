@@ -53,9 +53,14 @@ export const signin = async (req, res, next) => {
 
         const { password: pass, ...rest } = validUser._doc;
 
-        res.cookie('access_token', token, { httpOnly: true, expires: expirationDate })
-            .status(200)
-            .json(rest);
+        res.cookie('access_token', token, { 
+            httpOnly: true, 
+            expires: expirationDate,
+            secure: true // Set the secure flag
+        })
+        .status(200)
+        .json(rest);
+        
     } catch (error) {
         next(errorHandler(400, 'Could not find user.'));
     }
