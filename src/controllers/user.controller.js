@@ -64,7 +64,10 @@ export const getUserListing = async (req, res, next) => {
         try {
             const listing = await Listing.find({ userRef: req.params.id });
 
-            res.status(200).json(listing);
+            res.status(200).json({
+                message: "Listing fetched successfully",
+                payload: listing
+            });
         } catch (error) {
             next(error);
         }
