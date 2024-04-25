@@ -1,30 +1,19 @@
-/*
- * Title: App
- * Description: Handle All App Related Functionality
- * Author: Md Abdullah
- * Date: 10/19/23
- */
-
-// Dependencies
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import express from 'express';
 import mongoose from 'mongoose';
-
-// Import routes and middleware
 import authRouter from './src/routes/auth.route.js';
 import listingRouter from './src/routes/listing.route.js';
 import userRouter from './src/routes/user.route.js';
 import { verifyToken } from './src/utils/verifyUser.js';
 
-// Initialize express app
 const app = express();
 
 // Load environment variables
 dotenv.config();
 
-// CORS configuration
+// Configure CORS
 const allowedOrigin = 'https://real-estate-client-tau.vercel.app';
 app.use(cors({
     origin: allowedOrigin,
