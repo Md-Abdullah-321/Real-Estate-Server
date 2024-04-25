@@ -1,22 +1,16 @@
 import jwt from "jsonwebtoken";
-import { errorHandler } from "./error.js";
 
 export const verifyToken = (req, res, next) => {
-    // Check if the request has a token in cookies
-    const token = req.cookies.access_token;
-    if (!token) {
-        return next(errorHandler(401, 'Unauthorized: Access token not provided'));
-    }
-
-    // Verify the token
-    jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
-        if (err) {
-            // Token verification failed
-            return next(errorHandler(403, 'Forbidden: Invalid token'));
+    try {
+        const token = req.cookies.access_token;
+        if (!token) {
+            throw { status: 401, message: "Unauthorized: Access token not provided" };
         }
 
-        // Token verification succeeded, set user in request object
+        const user = jwt.verify(token, process.env.JWT_SECRET);
         req.user = user;
         next();
-    });
+    } catch (error) {
+        return res.status(error.status || 500).json({ error: error.message || "Internal Server Error" });
+    }
 };
