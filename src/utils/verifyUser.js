@@ -1,15 +1,15 @@
-import jwt from "jsonwebtoken";
+import User from "../models/user.model";
 
-export const verifyToken = (req, res, next) => {
+export const verifyToken = async (req, res, next) => {
     try {
-        const token = req.cookies.access_token;
-        console.log(token);
-        if (!token) {
-            throw { status: 401, message: "Unauthorized: Access token not provided" };
+        const userId = req.userId;
+        console.log(userId);
+        if (!userId) {
+            throw { status: 401, message: "Unauthorized: UserId not provided" };
         }
 
-        const user = jwt.verify(token, process.env.JWT_SECRET);
-        req.user = user;
+        
+        req.user = await User.findById(userId);
         next();
     } catch (error) {
         return res.status(error.status || 500).json({ error: error.message || "Internal Server Error" });
