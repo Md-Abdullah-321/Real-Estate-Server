@@ -37,9 +37,9 @@ app.use((err, req, res, next) => {
 });
 
 // Routes
-app.use('/api/user', userRouter); // User routes
-app.use('/api/auth', authRouter); // Authentication routes
-app.use('/api/listing', listingRouter); // Listing routes
+app.use('/api/user', userRouter); 
+app.use('/api/auth', authRouter); 
+app.use('/api/listing', listingRouter); 
 
 // Token verification middleware for API routes
 app.use('/api', verifyToken);
