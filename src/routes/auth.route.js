@@ -6,7 +6,7 @@ const authRouter = express();
 authRouter.post('/signup', signup);
 authRouter.post('/signin', signin);
 authRouter.post('/google', google);
-authRouter.post('/signout',signout);
+authRouter.get('/signout',signout);
 
 
 
