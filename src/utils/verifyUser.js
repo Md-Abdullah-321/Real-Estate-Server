@@ -3,7 +3,7 @@ import User from "../models/user.model.js";
 export const verifyToken = async (req, res, next) => {
     try {
         const userId = req.body.userId;
-        console.log(userId);
+        console.log(userId, req.body);
         if (!userId) {
             throw { status: 401, message: "Unauthorized: UserId not provided" };
         }

@@ -16,8 +16,8 @@ const userRouter = express.Router();
 
 //Routes:
 userRouter.get('/test', test);
-userRouter.get('/listings/:id',verifyToken, getUserListing);
+userRouter.post('/listings/:id',verifyToken, getUserListing);
 userRouter.post('/update/:id', verifyToken, updateUser);
-userRouter.delete('/delete/:id', verifyToken, deleteUser);
+userRouter.post('/delete/:id', verifyToken, deleteUser);
 userRouter.get('/:id', verifyToken, getUser);
 export default userRouter;
